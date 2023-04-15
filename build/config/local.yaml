@@ -1,0 +1,24 @@
+next:
+- build: docker
+	config:
+		base_image: eons/guest.img
+		image_name: eons/worker.k8s.guest.img
+		image_os: alpine
+		install:
+			containerd
+			kubelet
+			kubectl
+			kubeadm
+		filesystems:
+		- name: persist
+			mount: /mnt/persist
+			order: 10
+		networks:
+		- name: internode
+			order: 30
+		- name: admin
+			order: 31
+		launch:
+			20_config: "/usr/local/bin/configure.sh"
+		tags: 
+			latest

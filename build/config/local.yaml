@@ -1,14 +1,20 @@
 next:
 - build: docker
+	copy:
+	- /exe: exe/
 	config:
 		base_image: eons/guest.img
 		image_name: eons/worker.k8s.guest.img
 		image_os: alpine
+		after_setup:
+		- RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/main' > /etc/apk/repositories
+		- RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/community' >> /etc/apk/repositories
+		- RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories
 		install:
-			containerd
-			kubelet
-			kubectl
-			kubeadm
+		- containerd
+		- kubelet
+		- kubectl
+		- kubeadm
 		filesystems:
 		- name: persist
 			mount: /mnt/persist
@@ -19,6 +25,7 @@ next:
 		- name: admin
 			order: 31
 		launch:
-			20_config: "/usr/local/bin/configure.sh"
+		  20_setup_storage: "/usr/local/bin/setup_storage.sh"
+		  40_config: "/usr/local/bin/configure.sh"
 		tags: 
-			latest
+		- latest

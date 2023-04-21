@@ -25,7 +25,7 @@ next:
 		- name: admin
 			order: 31
 		launch:
-		  20_setup_storage: "/usr/local/bin/setup_storage.sh"
-		  40_config: "/usr/local/bin/configure.sh"
+			20_setup_storage: "/usr/local/bin/setup_storage.sh"
+			40_config: "/usr/local/bin/configure.sh"
 		tags: 
 		- latest

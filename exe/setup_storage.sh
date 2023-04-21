@@ -1,6 +1,11 @@
 persist="/mnt/persist/$HOSTNAME"
 
-ln -sv $persist/etc/kubernetes /etc/kubernetes
+paths=(
+	/etc/kubernetes
+	/etc/tinc
+)
 
-ln -sv $persist/etc/tinc /etc/tinc
+for path in ${paths[@]}; do
+	ln -sv $persist/$path $path
+done
 

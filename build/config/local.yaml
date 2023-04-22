@@ -29,3 +29,8 @@ next:
 			40_config: "/usr/local/bin/configure.sh"
 		tags: 
 		- latest
+- build: docker_publish
+	run_when_any:
+	- release
+	config:
+		image_name: eons/worker.k8s.guest.img

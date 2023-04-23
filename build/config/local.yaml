@@ -22,7 +22,7 @@ next:
 		networks:
 		- name: internode
 			order: 30
-		- name: administrator #can't use admin
+		- name: administrator
 			order: 31
 		launch:
 			20_setup_storage: "/usr/local/bin/setup_storage.sh"

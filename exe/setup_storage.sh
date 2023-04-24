@@ -1,3 +1,5 @@
+#!/bin/bash
+
 persist="/mnt/persist/$HOSTNAME"
 
 paths=(

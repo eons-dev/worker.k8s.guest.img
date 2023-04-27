@@ -25,8 +25,11 @@ next:
 		- name: administrator
 			order: 31
 		launch:
+			05_modprobe_overlay: modprobe overlay
 			20_setup_storage: "/usr/local/bin/setup_storage.sh"
 			40_config: "/usr/local/bin/configure.sh"
+			50_containerd: containerd
+			60_kubelet: kubelet
 		tags: 
 		- latest
 - build: docker_publish

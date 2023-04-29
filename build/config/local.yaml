@@ -2,6 +2,7 @@ next:
 - build: docker
 	copy:
 	- /exe: exe/
+	- /cfg: cfg/
 	config:
 		base_image: eons/guest.img
 		image_name: eons/worker.k8s.guest.img
@@ -29,7 +30,9 @@ next:
 			20_setup_storage: "/usr/local/bin/setup_storage.sh"
 			40_config: "/usr/local/bin/configure.sh"
 			50_containerd: containerd
-			60_kubelet: kubelet
+			60_kubelet: . /etc/default/kubelet; kubelet $KUBELET_KUBECONFIG_ARGS $KUBELET_CONFIG_ARGS $KUBELET_KUBEADM_ARGS $KUBELET_EXTRA_ARGS
+		also:
+		- ADD cfg/etc/containerd/config.toml /etc/containerd/config.toml
 		tags: 
 		- latest
 - build: docker_publish

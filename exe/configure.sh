@@ -5,8 +5,7 @@ mkdir -p /etc/default
 
 echo "KUBELET_EXTRA_ARGS=\"\
 --cgroup-driver=systemd \
---container-runtime=remote \
---container-runtime-endpoint=unix:///run/containerd/containerd.sock \
+--container-runtime-endpoint=unix:///var/run/containerd/containerd.sock \
 --node-ip=$(ip addr show internode | awk '$1 == "inet" {gsub(/\/.*$/, "", $2); print $2}')\" \
 " > /etc/default/kubelet
 

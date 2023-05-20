@@ -11,5 +11,8 @@ for path in ${paths[@]}; do
 	ln -sv $persist$path $path
 done
 
-# using the loop duplicates the last path???
-ln -sv $persist/var/lib/* /var/lib/
+# Specifying the $path after var/lib somehow duplicates it???
+for path in $(ls $persist/var/lib/); do
+	rm -rfv /var/lib/$path
+	ln -sv $persist/var/lib/$path /var/lib/
+done

@@ -12,4 +12,4 @@ for path in ${paths[@]}; do
 done
 
 # using the loop duplicates the last path???
-ln -sv $persist/var/lib/kubelet /var/lib/
+ln -sv $persist/var/lib/* /var/lib/

@@ -1,0 +1,1 @@
+rsync -rv --no-links var/lib/kubelet/pki /mnt/persist/$HOSTNAME/var/lib/kubelet/pki 

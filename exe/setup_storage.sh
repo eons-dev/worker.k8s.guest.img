@@ -12,7 +12,7 @@ for path in ${paths[@]}; do
 done
 
 mkdir -p /var/lib/kubelet/pki
-cp -rv $persist/var/lib/kubelet/pki/kubelet.* /var/lib/kubelet/pki/
+cp -rv $persist/var/lib/kubelet/pki/kubelet* /var/lib/kubelet/pki/
 rm -fv /var/lib/kubelet/pki/kubelet-client-current.pem
 ln -sv /var/lib/kubelet/pki/$(ls /var/lib/kubelet/pki/ | tail -3 | head -1) /var/lib/kubelet/pki/kubelet-client-current.pem 
 

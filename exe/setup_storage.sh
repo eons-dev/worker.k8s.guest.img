@@ -4,9 +4,7 @@ persist="/mnt/persist/$HOSTNAME"
 
 paths=(
 	/etc/kubernetes
-	/etc/tinc
-	/etc/cni
-	/opt 
+	/etc/tinc 
 )
 
 for path in ${paths[@]}; do

@@ -11,7 +11,7 @@ for path in ${paths[@]}; do
 	ln -sv $persist$path $path
 done
 
-cp -rv $persist/var/lib/ /var/lib/
+cp -rv $persist/var/lib/* /var/lib/
 
 if [ -d /var/lib/kubelet/pki/ ] && [ ! -z "$(ls /var/lib/kubelet/pki)" ]; then
 	rm -fv /var/lib/kubelet/pki/kubelet-client-current.pem

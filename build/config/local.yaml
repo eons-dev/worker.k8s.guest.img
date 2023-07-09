@@ -36,7 +36,7 @@ next:
 			40_mkkubelet: /usr/local/bin/mkkubelet.sh
 			50_containerd: containerd
 			60_kubelet: echo "NOT IMPLEMENTED - awaiting mkkubelet"; exit(1)
-			90_crond: crond -f -d 8
+			90_crond: export SHELL=/bin/bash; crond -f -d 8
 		also:
 		- ADD cfg/etc/containerd/config.toml /etc/containerd/config.toml
 		- ADD cfg/etc/periodic/15min/persist_var_lib_kubelet /etc/periodic/15min/persist_var_lib_kubelet 

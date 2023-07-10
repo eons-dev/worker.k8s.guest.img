@@ -1,1 +1,5 @@
+if [ -f /etc/periodic/15min/kubelet_checkin ]; then
+	exit 0
+fi
+
 rsync -ravh  --ignore-errors --delete --no-links --exclude '*snapshots*' --exclude '*.sock' /var/lib/ /mnt/persist/$HOSTNAME/var/lib/

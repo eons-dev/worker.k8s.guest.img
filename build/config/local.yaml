@@ -40,7 +40,8 @@ next:
 		also:
 		- ADD cfg/opt/crontab /opt/crontab
 		- ADD cfg/etc/containerd/config.toml /etc/containerd/config.toml
-		- ADD cfg/etc/periodic/15min/persist_var_lib /etc/periodic/15min/persist_var_lib_kubelet 
+		- ADD cfg/etc/periodic/15min/persist_var_lib /etc/periodic/15min/persist_var_lib
+		- ADD cfg/etc/periodic/15min/kubelet_checkin /etc/periodic/15min/kubelet_checkin
 		tags: 
 		- latest
 - build: docker_publish

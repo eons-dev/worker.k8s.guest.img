@@ -1,1 +1,1 @@
-rsync -rav --no-links --exclude '*snapshots*' --exclude '*.sock' /var/lib/ /mnt/persist/$HOSTNAME/var/lib/
+rsync -ravh  --ignore-errors --delete --no-links --exclude '*snapshots*' --exclude '*.sock' /var/lib/ /mnt/persist/$HOSTNAME/var/lib/

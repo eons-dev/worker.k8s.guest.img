@@ -1,0 +1,9 @@
+SHELL=/bin/bash
+
+# do daily/weekly/monthly maintenance
+# min	hour	day	month	weekday	command
+*/15	*	*	*	*	find /etc/periodic/15min -type f -exec /bin/bash {} \;
+0	*	*	*	*	find /etc/periodic/hourly -type f -exec /bin/bash {} \;
+0	2	*	*	*	find /etc/periodic/daily -type f -exec /bin/bash {} \;
+0	3	*	*	6	find /etc/periodic/weekly -type f -exec /bin/bash {} \;
+0	5	1	*	*	find /etc/periodic/monthly -type f -exec /bin/bash {} \;

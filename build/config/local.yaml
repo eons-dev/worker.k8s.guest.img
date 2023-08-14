@@ -20,6 +20,9 @@ next:
 		- kubeadm
 		- micro
 		- rsync
+		- go
+		- nftables
+		- git
 		filesystems:
 		- name: persist
 			mount: /mnt/persist
@@ -38,6 +41,7 @@ next:
 			60_kubelet: echo "NOT IMPLEMENTED - awaiting mkkubelet"; exit(1)
 			90_crond: export SHELL=/bin/bash; crond -f -d 8
 		also:
+		- RUN cd /opt; git clone https://github.com/containernetworking/plugins.git; cd plugins; ./build_linux.sh; mkdir -p /opt/cni/bin; mv bin/* /opt/cni/bin; cd ..; rm -rf plugins
 		- ADD cfg/etc/containerd/config.toml /etc/containerd/config.toml
 		- ADD cfg/etc/periodic/15min/persist_var_lib_kubelet /etc/periodic/15min/persist_var_lib_kubelet 
 		tags: 

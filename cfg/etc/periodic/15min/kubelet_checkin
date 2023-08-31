@@ -1,9 +1,8 @@
-if [ ! -f /var/run/kubelet.pid ]; then
+if [ -f /var/run/kubelet.exitcode ]; then
+	service kubelet restart
 	exit 0
 fi
 
-if [ -f /var/run/kubelet.exitcode ]; then
-	service kubelet restart
-else
+if [ -f /var/run/kubelet.pid ]; then
 	rm -fv /etc/periodic/15min/kubelet_checkin
 fi

@@ -19,14 +19,13 @@ next:
 		- kubectl
 		- kubeadm
 		- micro
-		- rsync
 		- go
 		- nftables
 		- git
-		filesystems:
-		- name: persist
-			mount: /mnt/persist
-			order: 10
+		# filesystems:
+		# - name: persist
+		# 	mount: /mnt/persist
+		# 	order: 10
 		networks:
 		- name: internode
 			order: 30
@@ -44,7 +43,6 @@ next:
 		- RUN cd /opt; git clone https://github.com/containernetworking/plugins.git; cd plugins; ./build_linux.sh; mkdir -p /opt/cni/bin; mv bin/* /opt/cni/bin; cd ..; rm -rf plugins
 		- ADD cfg/opt/crontab /opt/crontab
 		- ADD cfg/etc/containerd/config.toml /etc/containerd/config.toml
-		- ADD cfg/etc/periodic/15min/persist_var_lib /etc/periodic/15min/persist_var_lib
 		- ADD cfg/etc/periodic/15min/kubelet_checkin /etc/periodic/15min/kubelet_checkin
 		tags: 
 		- latest
